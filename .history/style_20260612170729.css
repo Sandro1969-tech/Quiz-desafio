@@ -1,0 +1,213 @@
+/* Reset e Variáveis de Cores Neon/Vibrantes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f0c1b, #201a30, #2d124d);
+    --card-bg: rgba(255, 255, 255, 0.07);
+    --purple-neon: #9d4edd;
+    --cyan-neon: #00f5d4;
+    --pink-neon: #ff007f;
+    --green-success: #390099;
+    --correct: #00f5d4;
+    --wrong: #ff0055;
+    --text-color: #ffffff;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Container Principal */
+.quiz-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(157, 78, 221, 0.2);
+    position: relative;
+}
+
+/* Controle de Telas */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tipografia */
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--cyan-neon), var(--purple-neon), var(--pink-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+p {
+    color: #b3b3b3;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Botão Principal */
+.btn-main {
+    background: linear-gradient(45deg, var(--purple-neon), var(--pink-neon));
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+}
+
+/* Header do Quiz (Progresso e Tempo) */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 20px;
+}
+
+#question-number {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    background: linear-gradient(90deg, var(--cyan-neon), var(--purple-neon));
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+/* Cronômetro Circular */
+.timer-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--cyan-neon);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px var(--cyan-neon);
+    transition: all 0.3s ease;
+}
+
+/* Grid de Alternativas */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover:not([disabled]) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--purple-neon);
+    transform: translateX(5px);
+}
+
+/* Estados de Resposta Correta/Incorreta */
+.option-btn.correct {
+    background: rgba(0, 245, 212, 0.2) !important;
+    border-color: var(--correct) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background: rgba(255, 0, 85, 0.2) !important;
+    border-color: var(--wrong) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+}
+
+/* Tela de Resultados */
+.final-score {
+    font-size: 1.5rem;
+    color: #fff;
+}
+#score-text {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--cyan-neon);
+}
+.performance-msg {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: var(--pink-neon);
+}
+
+ 

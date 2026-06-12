@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Super Quiz em Tempo Real ⚡</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Tela de Início -->
+        <div id="start-screen" class="screen active">
+            <h1>⚡ Super Quiz ⚡</h1>
+            <p>Prepare-se para testar seus conhecimentos em um piscar de olhos!</p>
+            <button id="start-btn" class="btn-main">Iniciar Desafio</button>
+        </div>
+
+        <!-- Tela do Jogo -->
+        <div id="game-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <span id="question-number">Pergunta 1 de 5</span>
+                    <div class="progress-bar"><div id="progress-fill"></div></div>
+                </div>
+                <div class="timer-circle">
+                    <span id="timer">15</span>
+                </div>
+            </div>
+
+            <h2 id="question-text">Aqui ficará a pergunta do quiz?</h2>
+
+            <div id="options-container" class="options-grid">
+                <!-- As alternativas serão geradas via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Tela de Resultado -->
+        <div id="result-screen" class="screen">
+            <h1>Fim de Jogo! 🎉</h1>
+            <p class="final-score">Você acertou <span id="score-text">0</span> de <span id="total-questions">0</span>!</p>
+            <div class="performance-msg" id="feedback-msg">Mandou bem!</div>
+            <button id="restart-btn" class="btn-main">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+ 
